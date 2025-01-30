@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control C# Functions</title>
+</head>
+<body>
+    <h1>Trigger C# Functions</h1>
+    <p>Status: <strong><%= serverStatus ? 'Connected' : 'Disconnected' %></strong></p>
+    
+    <button onclick="triggerAction('A')">Ctrl + A</button>
+    <button onclick="triggerAction('B')">Ctrl + B</button>
+    <button onclick="triggerAction('D')">Ctrl + D</button>
+    <button onclick="triggerAction('E')">Ctrl + E</button>
+
+    <script>
+        function triggerAction(action) {
+            fetch(`/trigger/${action}`)
+                .then(response => response.text())
+                .then(data => alert(data))
+                .catch(error => alert('Error: ' + error));
+        }
+    </script>
+</body>
+</html>
